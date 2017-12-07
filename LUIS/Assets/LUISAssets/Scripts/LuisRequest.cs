@@ -12,14 +12,12 @@ using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class LuisTest : MonoBehaviour
+public class LuisRequest : MonoBehaviour
 {
     public string AppId;
     public string AppKey;
     public bool Verbose = true;
     public string Domain = "westus";
-    [SerializeField]
-  //  private TextMesh luisOutput;
 
 
     // Use this for initialization
@@ -66,6 +64,7 @@ public class LuisTest : MonoBehaviour
     }
 #endif
 
+    //Public method that kicks off request to LUIS
     public void GetLuisPrediction(string LuisInput)
     {
         Task.Run(()=> GetLuisEntities(LuisInput));
@@ -76,44 +75,18 @@ public class LuisTest : MonoBehaviour
         var entity = new Microsoft.Cognitive.LUIS.Entity();
         Debug.Log(entity.GetHashCode());
         var client = new LuisClient(AppId, AppKey, Verbose, Domain);
-        //  var luisResults = await client.Predict("This is a test
         var luisResults = await client.Predict(LuisInput);
         ProcessResults(luisResults);
-
-
-
     }
 
 
-    bool newTextAvailable = false;
-    string newText = string.Empty;
-
-    private void Update()
-    {
-        if(newTextAvailable)
-        {
-            newTextAvailable = false;
-     //       luisOutput.text = newText;
-        }
-    }
-
-
+    //LUIS Results
+    //TODO: Hook up routing
     private void ProcessResults(LuisResult res)
     {
 
         Debug.Log(res.OriginalQuery);
         Debug.Log(res.TopScoringIntent.Name);
-
-        newText = res.TopScoringIntent.Name;
-        newTextAvailable = true;
-//#if UNITY_WSA
-
-//        UnityEngine.WSA.Application.InvokeOnAppThread(() =>
-//        {
-//            // Notify of complete
-//            luisOutput.text = res.TopScoringIntent.Name;
-//        }, false);
-//#endif
 
         List<string> entitiesNames = new List<string>();
         var entities = res.GetAllEntities();

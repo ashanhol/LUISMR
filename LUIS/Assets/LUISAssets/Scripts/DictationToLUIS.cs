@@ -6,9 +6,11 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.Windows.Speech;
 
+
 namespace HoloToolkit.Unity.InputModule.Tests
 {
-    public class DictationRecordButton : MonoBehaviour
+    [RequireComponent(typeof(LuisRequest))]
+    public class DictationToLUIS : MonoBehaviour
     {
         [SerializeField]
         [Range(0.1f, 5f)]
@@ -28,16 +30,15 @@ namespace HoloToolkit.Unity.InputModule.Tests
         [SerializeField]
         private TextMesh speechToTextOutput;
 
-        [SerializeField]
         private LuisRequest LUIS; 
 
 
-        public bool isRecording { get; set; }
+        public bool IsRecording { get; set; }
 
         /// <summary>
         /// Caches the text currently being displayed in dictation display text.
         /// </summary>
-        private StringBuilder textSoFar;
+        private StringBuilder textSoFar; //Not Used
 
         /// <summary>
         /// <remarks>Using an empty string specifies the default microphone.</remarks>
@@ -63,7 +64,8 @@ namespace HoloToolkit.Unity.InputModule.Tests
 
         private void Awake()
         {
-            isRecording = false;
+            LUIS = gameObject.GetComponent<LuisRequest>();
+            IsRecording = false;
             // Query the maximum frequency of the default microphone.
             int minSamplingRate; // Not used.
             Microphone.GetDeviceCaps(DeviceName, out minSamplingRate, out samplingRate);
@@ -82,7 +84,7 @@ namespace HoloToolkit.Unity.InputModule.Tests
             {
                 // If the microphone stops as a result of timing out, make sure to manually stop the dictation recognizer.
                 StartCoroutine(StopRecording());
-                isRecording = false;
+                IsRecording = false;
             }
 
         }
@@ -227,6 +229,7 @@ namespace HoloToolkit.Unity.InputModule.Tests
 
         /// <summary>
         /// This event is fired when an error occurs.
+        /// TODO: Hook up something so any external actors know we've errored. 
         /// </summary>
         /// <param name="error">The string representation of the error reason.</param>
         /// <param name="hresult">The int representation of the hresult.</param>
@@ -246,6 +249,8 @@ namespace HoloToolkit.Unity.InputModule.Tests
 
         }
 #endif
+
+        //Public exposed functions to start/stop recording. Check isRecording to see if already recording.
         public void StartRecordingDictation()
         {
             if (isTransitioning)
@@ -254,7 +259,7 @@ namespace HoloToolkit.Unity.InputModule.Tests
             else
             {
                 StartCoroutine(StartRecording(initialSilenceTimeout, autoSilenceTimeout, recordingTime));
-                isRecording = true;
+                IsRecording = true;
                 speechToTextOutput.color = Color.green;
             }
         }
@@ -267,32 +272,9 @@ namespace HoloToolkit.Unity.InputModule.Tests
             else
             {
                 StartCoroutine(StopRecording());
-                isRecording = false;
+                IsRecording = false;
                 speechToTextOutput.color = Color.white;
             }
         }
-/*
-        private void ToggleRecording()
-        {
-            if (isTransitioning)
-                return;
-
-            if (IsListening)
-            {
-                StartCoroutine(StopRecording());
-                speechToTextOutput.color = Color.white;
-                buttonRenderer.enabled = true;
-                recordLight.SetActive(false);
-            }
-            else
-            {
-                StartCoroutine(StartRecording(initialSilenceTimeout, autoSilenceTimeout, recordingTime));
-                speechToTextOutput.color = Color.green;
-                recordLight.SetActive(true);
-                buttonRenderer.enabled = false;
-            }
-        }
-
-    */
     }
 }

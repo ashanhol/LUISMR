@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class RecordClick : MonoBehaviour, IInputClickHandler{
 
-    public DictationRecordButton recordbutton;
+    public DictationToLUIS dictation;
 
     [SerializeField]
     private GameObject recordLight;
@@ -22,20 +22,18 @@ public class RecordClick : MonoBehaviour, IInputClickHandler{
     public void OnInputClicked(InputClickedEventData eventData)
     {
 
-        if (recordbutton.isRecording)
+        if (dictation.IsRecording)
         {
-            recordbutton.StopRecordingDictation();
+            dictation.StopRecordingDictation();
             recordLight.SetActive(false);
             buttonRenderer.enabled = true;
 
         }
         else
         {
-            recordbutton.StartRecordingDictation();
+            dictation.StartRecordingDictation();
             recordLight.SetActive(true);
             buttonRenderer.enabled = false;
-
-
         }
     }
 

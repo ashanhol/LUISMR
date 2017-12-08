@@ -1,7 +1,7 @@
 # Language Understanding in Mixed Reality with LUIS
 
 ## About 
-The aim of the project is to provide a sample Unity project demonstating how to leverage LUIS Cognitive Services as another method of input with MR applications. While it is possible to add voice commands and dication as an input as part of the MR Toolkit, there is no language understanding as part of that input out of the box. By adding support for LUIS in Unity you can use natural language to control Unity game objects. This project was initially developed during an internal Microsoft Mixed Reality hack.
+The aim of the project is to provide a sample Unity project demonstating how to leverage LUIS Cognitive Services as another method of input with MR applications. While it is possible to add voice commands and dication as input as part of the MR Toolkit, there is no language understanding as part of that input out of the box. By adding support for LUIS in Unity you can use natural language to control Unity game objects. This project was initially developed during an internal Microsoft Mixed Reality hack.
 
 ## Jump To: 
 - [Minimum requirements](#minimum-requirements)
@@ -43,6 +43,6 @@ In order to implement in Unity:
 ## Next Steps ##
 These are potential ideas for improving this project.  
 - Implement raycasting to determine what the player is looking in addition to explicitly stating which GameObject to affect. 
-- Create an easty to use UI for `LUISBehavior` so you don't have to hook everything up on the script.  
+- Create an easy to use UI for `LUISBehavior` so you don't have to hook everything up on the script.  
 - Auto import LUIS Intents and Entity catagories so users don't have to explicitly use strings on the `LUISBehavior` script. 
 - Investigate use of ScriptableoOjects to hold LUIS behaviors. 

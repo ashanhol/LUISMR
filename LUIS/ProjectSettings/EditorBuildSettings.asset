@@ -6,5 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/test.unity
+    guid: 8040fc96a28350f448c8ea01368652d2
+  - enabled: 1
     path: Assets/LUIS-Sample.unity
     guid: 63d1f4eb5709aae45a0b1c22b84a4559

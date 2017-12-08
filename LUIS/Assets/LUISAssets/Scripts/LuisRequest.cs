@@ -84,29 +84,19 @@ public class LuisRequest : MonoBehaviour
     //TODO: Hook up routing
     private void ProcessResults(LuisResult res)
     {
-
-        Debug.Log(res.OriginalQuery);
-        Debug.Log(res.TopScoringIntent.Name);
-
-        List<string> entitiesNames = new List<string>();
-        var entities = res.GetAllEntities();
-        foreach (Entity entity in entities)
+        if(LuisManager.Instance == null)
         {
-            entitiesNames.Add(entity.Name);
-            Debug.Log(entity.Name);
+            Debug.LogError("Requires LUIS Manager");
         }
+        
 
-        if (res.DialogResponse != null)
+#if UNITY_WSA 
+        UnityEngine.WSA.Application.InvokeOnAppThread(() =>
         {
-            if (res.DialogResponse.Status != "Finished")
-            {
-                Debug.Log(res.DialogResponse.Prompt);
-            }
-            else
-            {
-                Debug.Log("Finished");
-            }
-        }
+            LuisManager.Instance.ProcessResult(res);
+
+        }, false);
+#endif     
     }
 }
 

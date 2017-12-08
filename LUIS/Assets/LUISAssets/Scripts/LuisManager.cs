@@ -8,13 +8,7 @@ using UnityEngine;
 
 public class LuisManager : Singleton<LuisManager> {
 
-    [SerializeField]
-    private string appId;
-    [SerializeField]
-    private string appKey;
-
-    //private LuisClient client;
-
+    
     private List<GameObject> luisObjects;
 
     #region MonoBehaviour Implementation
@@ -22,8 +16,7 @@ public class LuisManager : Singleton<LuisManager> {
     protected override void Awake()
     {
         base.Awake();
-        // Test client 
-        //client = new LuisClient(appId, appKey, true);
+        
     }
 
 

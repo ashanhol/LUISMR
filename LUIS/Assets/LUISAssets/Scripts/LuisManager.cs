@@ -19,16 +19,6 @@ public class LuisManager : Singleton<LuisManager> {
         
     }
 
-
-    // Use this for initialization
-    void Start () {
-    }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
     #endregion
     
     public void ProcessResult(LuisResult res)
@@ -57,7 +47,7 @@ public class LuisManager : Singleton<LuisManager> {
                 Debug.LogWarning("Entity identity is missing");
                 return;
             }
-
+            //TODO: If entity is empty, use raycast to determine if we're looking at an object
             if (string.IsNullOrEmpty(id))
             {
                 Debug.LogWarning("Entity identity cannot be empty");
@@ -69,13 +59,6 @@ public class LuisManager : Singleton<LuisManager> {
                 continue;
             }
 
-            //List<string> entitiesNames = new List<string>();
-            //foreach (Entity entity in res.GetAllEntities())
-            //{
-            //    entitiesNames.Add(entity.Name);
-            //}
-
-            // loop through intentActions and invoke event with entity value.
             foreach (var intentAction in script.ActionableEntities)
             {
                 // check for primary intent match for each action
@@ -95,6 +78,7 @@ public class LuisManager : Singleton<LuisManager> {
         
     }
 
+    /*TODO: use for dynamic objects in scene*/
     public void AddLuisObject(GameObject obj)
     {
         if (obj == null)

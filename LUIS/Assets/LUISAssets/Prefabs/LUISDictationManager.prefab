@@ -9,18 +9,34 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1446851859656608}
+  m_RootGameObject: {fileID: 1884071274629522}
   m_IsPrefabParent: 1
---- !u!1 &1446851859656608
+--- !u!1 &1822533255509088
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4985970884774052}
-  - component: {fileID: 114747307484154268}
-  - component: {fileID: 114706049151378376}
+  - component: {fileID: 4060154820829788}
+  - component: {fileID: 114286118731594088}
+  m_Layer: 0
+  m_Name: Luis Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1884071274629522
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4679329417988338}
+  - component: {fileID: 114544927280546032}
+  - component: {fileID: 114106745007329074}
   m_Layer: 0
   m_Name: LUISDictationManager
   m_TagString: Untagged
@@ -28,16 +44,16 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1620002466433334
+--- !u!1 &1893818867268498
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4671277972965258}
-  - component: {fileID: 23618522976636158}
-  - component: {fileID: 102434316998735484}
+  - component: {fileID: 4315399995119350}
+  - component: {fileID: 23003422271490390}
+  - component: {fileID: 102902834332588012}
   m_Layer: 0
   m_Name: SpeechToTextOutput
   m_TagString: Untagged
@@ -45,39 +61,53 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4671277972965258
+--- !u!4 &4060154820829788
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1620002466433334}
+  m_GameObject: {fileID: 1822533255509088}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4679329417988338}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4315399995119350
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1893818867268498}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.2, z: 2}
   m_LocalScale: {x: 0.005, y: 0.005, z: 0.005}
   m_Children: []
-  m_Father: {fileID: 4985970884774052}
-  m_RootOrder: 0
+  m_Father: {fileID: 4679329417988338}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4985970884774052
+--- !u!4 &4679329417988338
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1446851859656608}
+  m_GameObject: {fileID: 1884071274629522}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4671277972965258}
+  - {fileID: 4060154820829788}
+  - {fileID: 4315399995119350}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23618522976636158
+--- !u!23 &23003422271490390
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1620002466433334}
+  m_GameObject: {fileID: 1893818867268498}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -106,13 +136,13 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!102 &102434316998735484
+--- !u!102 &102902834332588012
 TextMesh:
   serializedVersion: 3
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1620002466433334}
+  m_GameObject: {fileID: 1893818867268498}
   m_Text: Tap on sphere to begin recording
   m_OffsetZ: 0
   m_CharacterSize: 1
@@ -127,12 +157,12 @@ TextMesh:
   m_Color:
     serializedVersion: 2
     rgba: 4294967295
---- !u!114 &114706049151378376
+--- !u!114 &114106745007329074
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1446851859656608}
+  m_GameObject: {fileID: 1884071274629522}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 802e971178e864a4a827356d487b83f0, type: 3}
@@ -142,12 +172,23 @@ MonoBehaviour:
   AppKey: 
   Verbose: 1
   Domain: westus
---- !u!114 &114747307484154268
+--- !u!114 &114286118731594088
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1446851859656608}
+  m_GameObject: {fileID: 1822533255509088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cad1dded40e77947b98c4b33a01cf13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114544927280546032
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1884071274629522}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a3b54f44359a3af4c9d8981fc00c185d, type: 3}
@@ -156,4 +197,4 @@ MonoBehaviour:
   initialSilenceTimeout: 5
   autoSilenceTimeout: 20
   recordingTime: 10
-  speechToTextOutput: {fileID: 102434316998735484}
+  speechToTextOutput: {fileID: 102902834332588012}
